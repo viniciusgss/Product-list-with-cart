@@ -17,7 +17,8 @@ this._name = name;
 this._category = category;
 this._price = price;
 this._imageurl = imageurl;
-
-
+    }
+    get price(){
+        return this._price;
     }
 }
