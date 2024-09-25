@@ -1,25 +1,32 @@
-import { product } from "./product";
+import { Product } from "./product";
 
- export class Cart {
-    private _products: product[] = [];
-    private _total: number = 0;
+export class Cart {
+  private static _products: Product[] = [];
+  private static _total: number = 0;
 
-    addToCart(product: product){
-        //faz com que se o produto repetir ele não adiciona o mesmo item denovo
-        const productInCarts = this._products.includes(product);
+  static calculateTotal() {
+    this._total = 0;
 
-if(!productInCarts) {
-    this._products.push(product);
+    for (const product of this.products) {
+      this._total += product.total;
+    }
+  }
+
+  static addToCart(product: Product) {
+    const productInCart = this._products.includes(product);
+
+    if (!productInCart) {
+      this._products.push(product);
+    }
+
+    this.calculateTotal();
+  }
+
+  static get products() {
+    return this._products;
+  }
+
+  static get total() {
+    return this._total;
+  }
 }
-
-        this._total += product.price;
-    }
-    get products(){
-        return this._products;
-    }
-    get total(){
-        return this._total;
-    }
-}
-//não é necessário colocar constructor
-

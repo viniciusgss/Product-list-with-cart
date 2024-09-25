@@ -1,4 +1,6 @@
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .product-name{
     font-weight:400 ;
@@ -21,7 +23,7 @@ color: hsl(14, 86%, 42%);
 }
 
 .button{
-    background-color: red;
+
     padding: 15px 30px;
     position: absolute;
     bottom: 0;
