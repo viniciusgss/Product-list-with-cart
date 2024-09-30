@@ -1,33 +1,31 @@
-//importar date.json
-//importar entines
+// importar data.json
+// importar entities/product.ts
+// Criar os objetos de produto utilizando os
+// dados de data.json
 
-import { product } from "./entines/product";
-
-//criar produtos utilizando os dados do data.json
-
+import { Product } from "./entines/product";
 import data from "../data.json";
-
 import { Cart } from "./entines/cart";
 
-const cart = new Cart();
+for(const product of data) {
+    new Product(
+        product.name,
+        product.category,
+        product.price,
+        product.image.desktop
+    ).toHTML();
+}
 
-const  product1 = new product("Banana", "Fruta", 10, "http//example.com")
+/*
+const product1 = new Product("Banana", "Fruta", 10, "http://example.com");
 product1.incrementQuantity();
 product1.incrementQuantity();
 product1.incrementQuantity();
 
-
-const  product2 = new product("Maça", "Fruta", 5, "http//example.com")
-
+const product2 = new Product("Maçã", "Fruta", 5, "http://example.com");
 product2.incrementQuantity();
 product2.incrementQuantity();
+console.log(Cart);
 
-Cart.addToCart(product1);
-Cart.addToCart(product2);
-
-console.log(Cart.products);
-
-//console.log(cart);
-//console.log(cart.products.length);
-//console.log(cart.total);
-
+Cart.removeProduct(product2);
+console.log(Cart);

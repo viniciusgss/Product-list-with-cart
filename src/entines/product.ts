@@ -1,47 +1,58 @@
-import { v4 as uuidv4 } from 'uuid';
-import { Cart } from './cart';
+import { v4 as uuidv4 } from "uuid";
+import { Cart } from "./cart";
 
-export class product {
+export class Product {
+  private _id: string = uuidv4();
+  private _name: string;
+  private _category: string;
+  private _price: number;
+  private _imageUrl: string;
+  private _quantity: number = 0;
+  private _total: number = 0;
 
-    private _id:string = uuidv4();
-    private _name:string;
-    private _category:string;
-    private _price:number;
-    private _imageurl:string;
-    private _quantity : number = 0;
-    private _total: number = 0;
+  constructor(name: string, category: string, price: number, imageUrl: string) {
+    this._name = name;
+    this._category = category;
+    this._price = price;
+    this._imageUrl = imageUrl;
+  }
 
-    constructor(name: string,
-        category: string,
-        price: number,
-        imageurl:string
-    ){
-this._name = name;
-this._category = category;
-this._price = price;
-this._imageurl = imageurl;
-    }
-
-calculateTotal(){
-    this._total = this._quantity *this._price;
+toHTML(){
+    const productListHtml = document.getElementById("products-list")
+    const productHtml = document.createElement("li")
+    
 }
 
-incrementQuantity(){
+  get id() {
+    return this._id;
+  }
 
+  get quantity() {
+    return this._quantity;
+  }
+
+  get total() {
+    return this._total;
+  }
+
+  calculateTotal() {
+    this._total = this._quantity * this._price;
+  }
+
+  incrementQuantity() {
     this._quantity++;
     this.calculateTotal();
 
     Cart.addToCart(this);
-}
+  }
 
-decrementQuantity(){
+  decrementQuantity() {
     this._quantity--;
     this.calculateTotal();
+    // TODO: remover o produto do carrinho se a quantidade for 0
+  }
 
-    Cart.addToCart(this);
-}
-
-    get price(){
-        return this._price;
-    }
+  get price() {
+    return this._price;
+  }
 }
