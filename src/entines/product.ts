@@ -4,7 +4,7 @@ import { Cart } from "./cart";
 export class Product {
   private _id: string = uuidv4();
   private _name: string;
-  private _category: string;
+  private _category: string;  
   private _price: number;
   private _imageUrl: string;
   private _quantity: number = 0;

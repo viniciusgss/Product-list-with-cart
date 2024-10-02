@@ -7,13 +7,13 @@ import { Product } from "./entines/product";
 import data from "../data.json";
 import { Cart } from "./entines/cart";
 
-for(const product of data) {
-    new Product(
-        product.name,
-        product.category,
-        product.price,
-        product.image.desktop
-    ).toHTML();
+for (const product of data) {
+  new Product(
+    product.name,
+    product.category,
+    product.price,
+    product.image.desktop
+  ).toHTML();
 }
 
 /*
@@ -29,3 +29,4 @@ console.log(Cart);
 
 Cart.removeProduct(product2);
 console.log(Cart);
+*/
